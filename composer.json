@@ -1,0 +1,19 @@
+{
+    "name": "user/blog.loc",
+    "authors": [
+        {
+            "name": "Anna Galochkina",
+            "email": "kr0085@mail.ru"
+        }
+    ],
+    "require": {
+        "php": "^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Core\\": "core",
+            "App\\": "app"
+
+        }
+    }
+}

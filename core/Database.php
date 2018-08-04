@@ -3,70 +3,43 @@
 
 namespace Core;
 
+use Zend\Db\Adapter\Driver\ResultInterface;
+use Zend\Db\ResultSet\ResultSet;
+use Zend\Db\Sql\Sql;
 
 class Database
 {
-    /**
-     * @var
-     */
-    private $link;
+    protected $sql;
+
+    protected $adapter;
+
+    private $config;
 
     /**
      * Connection constructor.
      */
     public function __construct()
     {
-        $this->connect();
+        $this->config = require __DIR__ . '/../app/Config/database.php';
+        $this->adapter = new \Zend\Db\Adapter\Adapter($this->config);
+        $this->sql = new Sql($this->adapter);
     }
 
-    /**
-     * @return $this
-     */
-    private function connect()
+    public function select(string $table = null)
     {
-        $config = [
-            'host' => 'localhost',
-            'dbname' => 'cms',
-            'charset' => 'utf8',
-            'username' => 'root',
-            'password' => 'root'
-        ];
-
-        $dsn = 'mysql:host='.$config['host'].';dbname='.$config['dbname'].';charset='.$config['charset'];
-
-        $this->link = new \PDO($dsn, $config['username'], $config['password']);
-
-        return $this;
+        return $this->sql->select($table);
     }
 
-    /**
-     * @param $sql
-     * @return mixed
-     */
-    public function execute($sql)
+    public function execute($select)
     {
-        $sth = $this->link->prepare($sql);
+        $results = $this->sql->prepareStatementForSqlObject($select)->execute();
+        $resultSet = false;
 
-        return $sth->execute();
-    }
-
-    /**
-     * @param $sql
-     * @return array
-     */
-    public function query($sql)
-    {
-        $sth = $this->link->prepare($sql);
-
-        $sth->execute();
-
-        $result = $sth->fetchAll(\PDO::FETCH_ASSOC);
-
-        if($result === false)
-        {
-            return [];
+        if ($results instanceof ResultInterface && $results->isQueryResult()) {
+            $resultSet = new ResultSet;
+            $resultSet->initialize($results);
         }
 
-        return $result;
+        return $resultSet;
     }
 }

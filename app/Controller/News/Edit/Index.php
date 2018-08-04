@@ -11,9 +11,6 @@ class Index extends AbstractController
 {
     public function index()
     {
-        $db = new Database();
-
-        print_r($db);
         echo 'News Edit Page';
     }
 }

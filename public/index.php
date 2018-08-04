@@ -16,6 +16,8 @@ try {
 
     new $controller();
 
+//    $db = new \Core\Database();
+
 } catch (\Exception $e) {
     echo $e->getMessage();
 }

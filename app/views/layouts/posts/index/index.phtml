@@ -1,0 +1,36 @@
+<div class="container">
+    <h2>All Posts</h2>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Author</th>
+            <th>Title</th>
+            <th>Content</th>
+            <th>Pubdate</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($data as $key => $value): ?>
+        <tr>
+            <td><?= $value['id'] ?></td>
+            <td><?= $value['id_author'] ?></td>
+            <td><a href="/posts/view/index/<?= $value['id'] ?>"><?= $value['title'] ?></a></td>
+            <td><?= $value['content'] ?></td>
+            <td><?= $value['pubdate'] ?></td>
+        </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
+    <nav aria-label="Page navigation" class="pagination_nav">
+        <ul class="pagination">
+            <li><a href="javascript:void(0);" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+            <li><a href="javascript:void(0);">1</a></li>
+            <li><a href="javascript:void(0);">2</a></li>
+            <li><a href="javascript:void(0);">3</a></li>
+            <li><a href="javascript:void(0);">4</a></li>
+            <li><a href="javascript:void(0);">5</a></li>
+            <li><a href="javascript:void(0);" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+        </ul>
+    </nav>
+</div>

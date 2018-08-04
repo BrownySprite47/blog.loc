@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Controller\Index\Index;
+namespace App\Controller\Posts\Index;
 
 
 use App\Model\Posts;
@@ -15,13 +15,13 @@ class Index extends AbstractController
      * @return mixed|void
      * @throws \Exception
      */
-    public function index()
+    public function index($id = null)
     {
         $model = new Posts();
 
         $this->posts = $model->getPosts()->toArray();
 
         $view = new \App\View\Index();
-        $view->view('index/index/index', $this->posts);
+        $view->view('/posts/index/index', $this->posts);
     }
 }

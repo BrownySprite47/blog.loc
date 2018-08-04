@@ -20,4 +20,12 @@ class Posts extends AbstractModel
 
         return $result;
     }
+
+    public function getPost($id)
+    {
+        $select = $this->select()->from('posts')->where(['id' => $id]);
+        $result = $this->execute($select);
+
+        return $result;
+    }
 }

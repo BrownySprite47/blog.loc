@@ -9,9 +9,9 @@ abstract class AbstractController
     /**
      * AbstractController constructor.
      */
-    public function __construct()
+    public function __construct($id = null)
     {
-        $this->index();
+        $this->index($id);
     }
 
     /**

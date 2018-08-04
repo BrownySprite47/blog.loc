@@ -10,6 +10,8 @@ class Router
 
     protected $path;
 
+    protected $id;
+
     /**
      * @return bool
      */
@@ -38,13 +40,26 @@ class Router
         $path = $this->getUriParts();
 
         if (!$this->path) {
-            $controllerPath[0] = isset($path[0]) ? ucfirst(strtolower($path[0])) : 'Index';
+            $controllerPath[0] = isset($path[0]) ? ucfirst(strtolower($path[0])) : 'Posts';
             $controllerPath[1] = isset($path[1]) ? ucfirst(strtolower($path[1])) : 'Index';
             $controllerPath[2] = isset($path[2]) ? ucfirst(strtolower($path[2])) : 'Index';
 
             $this->path = implode('\\', $controllerPath);
         }
         return $this->path;
+    }
+
+    /**
+     * @return string
+     */
+    public function getId()
+    {
+        $path = $this->getUriParts();
+
+        if (!$this->id) {
+            $this->id = isset($path[3]) ? (int)$path[3] : 0;
+        }
+        return $this->id;
     }
 
     /**

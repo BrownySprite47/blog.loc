@@ -29,9 +29,4 @@ class Posts extends AbstractModel
 //        var_dump($result->toArray());
         return $result;
     }
-
-    public function setPosts()
-    {
-
-    }
 }

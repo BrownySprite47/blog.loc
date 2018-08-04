@@ -8,15 +8,10 @@ use Core\Router;
 
 
 try {
-    echo '<pre>';
-
     $router = new Router();
-
     $controller = $router->getController();
 
     new $controller();
-
-//    $db = new \Core\Database();
 
 } catch (\Exception $e) {
     echo $e->getMessage();

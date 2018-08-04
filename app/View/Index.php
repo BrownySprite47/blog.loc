@@ -13,9 +13,23 @@ use Core\AbstractView;
 
 class Index extends AbstractView
 {
-    public function view($data)
+    public function __construct()
     {
-//        print_r($data);
-        require_once __DIR__. '/../templates/index.php';
+        $this->config = require CONFIG_DIR . '/config_pages.php';
+
+    }
+
+    public function view($page, $data)
+    {
+
+        $this->title = $this->config[$page]['title'];
+        $this->data = $data;
+        $this->css = $this->config[$page]['css'];
+        $this->js = $this->config[$page]['js'];
+
+
+        require_once __DIR__. '/../templates/layouts/header.phtml';
+        require_once __DIR__. '/../templates/' . $page . '.phtml';
+        require_once __DIR__. '/../templates/layouts/footer.phtml';
     }
 }

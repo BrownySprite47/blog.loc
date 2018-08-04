@@ -1,6 +1,5 @@
 <?php
-
-use Zend\Db\Adapter\Adapter;
+define('CONFIG_DIR', __DIR__);
 
 return [
     'driver'   => 'Pdo_Mysql',

@@ -17,8 +17,8 @@ class Index extends AbstractController
         $model = new Posts();
 
         $this->posts = $model->getPosts()->toArray();
-        $model->setPosts();
+
         $view = new \App\View\Index();
-        $view->view($model);
+        $view->view('index/index/index', $this->posts);
     }
 }

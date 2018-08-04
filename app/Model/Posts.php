@@ -13,20 +13,11 @@ use Core\AbstractModel;
 
 class Posts extends AbstractModel
 {
-//    public $author;
-//
-//    public $title;
-//
-//    public $content;
-//
-//    public $pubdate;
-
     public function getPosts()
     {
         $select = $this->select()->from('posts');
         $result = $this->execute($select);
 
-//        var_dump($result->toArray());
         return $result;
     }
 }

@@ -1,0 +1,24 @@
+<h2>All Posts</h2>
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Author</th>
+        <th>Title</th>
+        <th>Content</th>
+        <th>Pubdate</th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($data as $key => $value): ?>
+    <tr>
+        <td><?= $value['id'] ?></td>
+        <td><?= $value['id_author'] ?></td>
+        <td><?= $value['title'] ?></td>
+        <td><?= $value['content'] ?></td>
+        <td><?= $value['pubdate'] ?></td>
+    </tr>
+    <?php endforeach; ?>
+
+    </tbody>
+</table>

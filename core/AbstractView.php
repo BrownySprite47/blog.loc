@@ -14,4 +14,6 @@ abstract class AbstractView
     protected $css;
 
     protected $js;
+
+    protected $structure;
 }

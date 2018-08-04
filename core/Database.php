@@ -25,11 +25,19 @@ class Database
         $this->sql = new Sql($this->adapter);
     }
 
+    /**
+     * @param string|null $table
+     * @return \Zend\Db\Sql\Select
+     */
     public function select(string $table = null)
     {
         return $this->sql->select($table);
     }
 
+    /**
+     * @param $select
+     * @return bool|ResultSet
+     */
     public function execute($select)
     {
         $results = $this->sql->prepareStatementForSqlObject($select)->execute();

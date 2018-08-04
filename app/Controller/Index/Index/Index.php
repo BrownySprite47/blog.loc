@@ -9,9 +9,12 @@ use Core\AbstractController;
 
 class Index extends AbstractController
 {
-
     public $posts;
 
+    /**
+     * @return mixed|void
+     * @throws \Exception
+     */
     public function index()
     {
         $model = new Posts();

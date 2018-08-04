@@ -11,11 +11,13 @@ class Index extends AbstractController
 {
 
     /**
-     * @return mixed
+     * @param null $id
+     * @return mixed|void
+     * @throws \Exception
      */
     public function index($id = null)
     {
         $view = new \App\View\Index();
-        $view->view('/posts/edit/index');
+        $view->view('posts/edit/index');
     }
 }

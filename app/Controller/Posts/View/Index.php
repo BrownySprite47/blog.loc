@@ -10,8 +10,11 @@ use Core\AbstractController;
 class Index extends AbstractController
 {
     public $post;
+
     /**
-     * @return mixed
+     * @param null $id
+     * @return mixed|void
+     * @throws \Exception
      */
     public function index($id = null)
     {
@@ -20,6 +23,6 @@ class Index extends AbstractController
         $this->post = $model->getPost($id)->toArray();
 
         $view = new \App\View\Index();
-        $view->view('/posts/view/index', $this->post[0]);
+        $view->view('posts/view/index', $this->post[0]);
     }
 }

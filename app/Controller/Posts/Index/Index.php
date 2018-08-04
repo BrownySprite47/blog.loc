@@ -12,6 +12,7 @@ class Index extends AbstractController
     public $posts;
 
     /**
+     * @param null $id
      * @return mixed|void
      * @throws \Exception
      */
@@ -22,6 +23,6 @@ class Index extends AbstractController
         $this->posts = $model->getPosts()->toArray();
 
         $view = new \App\View\Index();
-        $view->view('/posts/index/index', $this->posts);
+        $view->view('posts/index/index', $this->posts);
     }
 }
